@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">ScanApp</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="txt_login">Login</string>
+    <string name="txt_username_not_valid">Username not valid</string>
+    <string name="txt_password_not_valid">Password not valid</string>
+    <string name="txt_password_less_than_issue">Password must be greater than 4</string>
+    <string name="txt_please_wait">Please wait...</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="txt_username">Username</string>
+    <string name="txt_hint_password">********</string>
+    <string name="txt_remeber_me">Remember Me</string>
+    <string name="txt_username_and_password_are_required">Username and Password are required.</string>
+    <string name="txt_password_is_required">Password is required.</string>
+    <string name="txt_viewmore">View More</string>
+    <string name="txt_driven">Driven</string>
+    <string name="txt_spent">Spent</string>
+    <string name="txt_spent_fuel">Spent Fuel</string>
+    <string name="txt_info">Info</string>
+    <string name="txt_mobilze">Mobilze</string>
+    <string name="txt_geo">Geo</string>
+    <string name="txt_find">Find</string>
+    <string name="txt_history">History</string>
+    <string name="txt_position">Position</string>
+    <string name="menu_logout">Logout</string>
+    <string name="googleMapKey">AIzaSyBwSMLHqZodZFadGEcssustOhxpCq3LJ4s</string>
+    <string name="txt_login_failed">Login failed</string>
+    <string name="txt_home">Home</string>
+    <string name="txt_navigate">Inavigate</string>
+    <string name="txt_notification">Notification</string>
+    <string name="txt_disclaimer">Disclaimer</string>
+    <string name="txt_help">Help</string>
+    <string name="txt_frequently_visited_places">Frequently Visited Places</string>
+    <string name="txt_account_setting">Account Setting</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_already_open">Already open</string>
+    <string name="txt_today">Today</string>
+    <string name="txt_past_7_days">Past 7 Days</string>
+    <string name="txt_past_month">Past Month</string>
+    <string name="txt_geofence">Geo Fence</string>
+    <string name="hey">Hey</string>
+
+</resources>

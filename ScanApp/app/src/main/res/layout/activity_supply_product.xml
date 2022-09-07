@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.SupplyProductActivity">
+
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/_20sdp"
+    android:paddingEnd="@dimen/_20sdp"
+    android:paddingStart="@dimen/_20sdp"
+    android:id="@+id/llProductCode"
+    android:layout_marginTop="@dimen/_30sdp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Code"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp" />
+
+    <EditText
+        android:id="@+id/etProductCode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_below="@+id/txt_main"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:background="@drawable/edit_text_bg"
+        android:gravity="top|start"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="@dimen/_5sdp"
+        android:textColor="@color/txtGrey"
+        android:textSize="@dimen/_8sdp" />
+</androidx.appcompat.widget.LinearLayoutCompat>
+<androidx.appcompat.widget.LinearLayoutCompat
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/_10sdp"
+    android:paddingEnd="@dimen/_20sdp"
+    android:paddingStart="@dimen/_20sdp"
+    android:id="@+id/llSerialNo"
+    app:layout_constraintTop_toBottomOf="@+id/llProductCode"
+    app:layout_constraintStart_toStartOf="parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Serial No"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp" />
+
+    <EditText
+        android:id="@+id/etFullName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_below="@+id/txt_main"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:background="@drawable/edit_text_bg"
+        android:gravity="top|start"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="@dimen/_5sdp"
+        android:textColor="@color/txtGrey"
+        android:textSize="@dimen/_8sdp" />
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_20sdp"
+        android:paddingStart="@dimen/_20sdp"
+        android:id="@+id/llBatchNo"
+        app:layout_constraintTop_toBottomOf="@+id/llSerialNo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Batch No"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+
+        <EditText
+            android:id="@+id/etBatchNo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_below="@+id/txt_main"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:background="@drawable/edit_text_bg"
+            android:gravity="top|start"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="@dimen/_5sdp"
+            android:textColor="@color/txtGrey"
+            android:textSize="@dimen/_8sdp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_20sdp"
+        android:paddingEnd="@dimen/_20sdp"
+        android:paddingStart="@dimen/_20sdp"
+        android:id="@+id/llExpiry"
+        app:layout_constraintTop_toBottomOf="@+id/llBatchNo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Expiry"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+
+        <EditText
+            android:id="@+id/etExpiry"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_below="@+id/txt_main"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:background="@drawable/edit_text_bg"
+            android:gravity="top|start"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="@dimen/_5sdp"
+            android:textColor="@color/txtGrey"
+            android:textSize="@dimen/_8sdp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/llBtns"
+        app:layout_constraintTop_toBottomOf="@id/llExpiry"
+        android:weightSum="2">
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_weight="1"
+            android:background="#A2C1E5"
+            android:text="Scan pack"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:id="@+id/btnScanpak"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_weight="1"
+            android:background="#66FF33"
+            android:text="Complete"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_18sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:id="@+id/btnComplete"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@drawable/status_bg"
+        android:layout_margin="@dimen/_20sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingBottom="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@+id/llBtns"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Status:"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:text="Supplied"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="Info:"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtInfoValue"
+                android:textSize="@dimen/_14sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:text="Supplied"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
