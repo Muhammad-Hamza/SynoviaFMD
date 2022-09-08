@@ -61,7 +61,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/etFullName"
+            android:id="@+id/etSerialNumber"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_32sdp"
             android:layout_below="@+id/txt_main"
