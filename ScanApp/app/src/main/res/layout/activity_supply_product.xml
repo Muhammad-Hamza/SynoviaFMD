@@ -179,6 +179,7 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/llStatus"
         android:layout_margin="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:background="@drawable/status_bg"
@@ -204,6 +205,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/txtSupplied"
                 android:paddingStart="@dimen/_5sdp"
                 android:text="Supplied"
                 android:textColor="@color/black"

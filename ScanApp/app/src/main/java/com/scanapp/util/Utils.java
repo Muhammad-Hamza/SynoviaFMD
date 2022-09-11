@@ -12,7 +12,7 @@ public class Utils {
         map.put("emvs-data-entry-mode", "non-manual");
         map.put("emvs-api-version", "2.4");
         map.put("Content-Type", "application/json");
-        map.put("Authorization", "Bearer " + token);
+        map.put("Authorization", "bearer " + token);
         return map;
     }
 }

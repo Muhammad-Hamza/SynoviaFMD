@@ -58,7 +58,10 @@ class ProductSupplyViewModel(application: Application) : AndroidViewModel(applic
 
             override fun onResponse(call: Call<SupplyModel>, response: Response<SupplyModel>) {
                 Log.d(TAG, response.raw().toString())
-                mListener.onDataFetch(response.body()!!)
+                if(response?.body() != null)
+                {
+                    mListener.onDataFetch(response.body()!!)
+                }
                 mErrorListener.dismissDialog()
             }
         })

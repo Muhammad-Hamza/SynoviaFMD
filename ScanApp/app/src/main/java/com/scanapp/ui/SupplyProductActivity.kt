@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
@@ -14,6 +16,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -70,10 +73,7 @@ class SupplyProductActivity : AppCompatActivity() {
         val batch = text.substring(27, 32)
         val serialNumber = text.substring(text.length - 11, text.length)
 
-        etProductCode.setText(productCode)
-        etSerialNumber.setText(serialNumber)
-        etBatchNo.setText(batch)
-        etExpiry.setText(expiry)
+
         btnComplete.setOnClickListener {
             hitAPIRequest()
         }
@@ -99,9 +99,20 @@ class SupplyProductActivity : AppCompatActivity() {
                 // There are no request codes
                 val data: Intent = result.getData()!!
                 val resultData = data.getStringExtra("result")
+
+
                 if (!TextUtils.isEmpty(resultData)) {
-                    Log.d("Supply", resultData.toString())
-                    hitAPIRequest(resultData!!)
+                    Log.d("Supply", resultData!!.toString())
+                    val productCode = resultData?.substring(3, 17)
+                    val expiry = resultData?.substring(19, 25)
+                    val batch = resultData?.substring(27, 32)
+                    val serialNumber = resultData?.substring(resultData!!.length - 11, resultData!!.length)
+
+                    etProductCode.setText(productCode)
+                    etSerialNumber.setText(serialNumber)
+                    etBatchNo.setText(batch)
+                    etExpiry.setText(expiry)
+
                     Toast.makeText(this, resultData, Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "Data not found", Toast.LENGTH_SHORT).show()
@@ -127,25 +138,18 @@ class SupplyProductActivity : AppCompatActivity() {
     }
 
     private fun hitAPIRequest(text: String) {
-        val productCode = text.substring(3, 17)
-        val expiry = text.substring(19, 25)
-        val batch = text.substring(27, 32)
-        val serialNumber = text.substring(text.length - 11, text.length)
 
-        etProductCode.setText(productCode)
-        etSerialNumber.setText(serialNumber)
-        etBatchNo.setText(batch)
-        etExpiry.setText(expiry)
 
         mViewModel.postSupplyInfo(
             this,
-            productCode,
-            serialNumber,
-            batch,
-            expiry,
+            etProductCode.text.toString(),
+            etSerialNumber.text.toString(),
+            etBatchNo.text.toString(),
+            etExpiry.text.toString(),
             object : ProductSupplyViewModel.onCompleteListener {
                 override fun onDataFetch(model: SupplyModel) {
                     showMessage(model.information)
+
                     makeEmptyFields()
                 }
 
@@ -170,6 +174,23 @@ class SupplyProductActivity : AppCompatActivity() {
                 override fun onDataFetch(model: SupplyModel) {
                     showMessage(model.information)
                     makeEmptyFields()
+
+                    val txtSupplied = findViewById<TextView>(R.id.txtSupplied)
+                    val txtInfo = findViewById<TextView>(R.id.txtInfoValue)
+                    val bg = findViewById<LinearLayoutCompat>(R.id.llStatus)
+
+                    if(model?.state != null)
+                    {
+                        if (model.state.equals("Destroyed") || model.state.equals("Recalled"))
+                        {
+                            bg.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorRed))
+                        }
+                    }
+
+                    txtSupplied.setText(model.state)
+                    txtInfo.setText(model.information)
+
+
                 }
 
             }
