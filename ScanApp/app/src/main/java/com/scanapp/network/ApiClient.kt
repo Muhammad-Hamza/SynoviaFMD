@@ -17,10 +17,7 @@ import java.util.concurrent.TimeUnit
 object ApiClient
 {
 
-    private const val BASE_URL_BB = "https://appservice.basketballballistics.com/"
     private const val BASE_URL_TESTING = "https://api-ite.nmvo.eu/"
-    private const val BASE_URL_QB = "https://appservice.qbballistics.com/"
-    private const val BASE_URL_VB = "https://appservice.volleyballballistics.com/"
 
     private lateinit var retrofit: Retrofit
     lateinit var okHttpClient: OkHttpClient
@@ -50,8 +47,7 @@ object ApiClient
 
     private fun getURL(): String
     {
-               return BASE_URL_TESTING
-
+      return BASE_URL_TESTING
     }
 
 }
