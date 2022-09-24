@@ -15,9 +15,15 @@ class DashboardActivity : AppCompatActivity()
         setContentView(R.layout.activity_main2)
 
         val llSupply = findViewById<CardView>(R.id.llSupply)
+        val verify = findViewById<CardView>(R.id.verify)
 
         llSupply.setOnClickListener{
             launchActivity<SupplyActivity> {  }
+        }
+        verify.setOnClickListener{
+            launchActivity<SupplyActivity> {
+                putExtra("verificationType","verify")
+            }
         }
 
     }

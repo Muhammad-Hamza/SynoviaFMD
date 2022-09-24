@@ -14,7 +14,11 @@ class SupplyActivity : AppCompatActivity()
         setContentView(R.layout.activity_supply)
         val btnNext = findViewById<CardView>(R.id.llNext)
 
+
         btnNext.setOnClickListener{
+            if(intent.hasExtra("verificationType")){
+                launchActivity<VerifyActivity> {  }
+            } else
             launchActivity<SupplyProductActivity> {  }
         }
     }

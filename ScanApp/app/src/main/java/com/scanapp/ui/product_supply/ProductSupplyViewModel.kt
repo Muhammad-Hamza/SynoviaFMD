@@ -76,6 +76,48 @@ class ProductSupplyViewModel(application: Application) : AndroidViewModel(applic
         })
     }
 
+
+    fun verifyPack(context: Context, productCode: String, serialNumber: String, batch: String,
+        expiry: String, mListener: onCompleteListener)
+    {
+        mErrorListener.addDialog()
+        val apiService = ApiClient.client(context)
+                .create(ApiInterface::class.java)
+
+        var call = apiService.getVerify(productCode, serialNumber, batch, expiry, Utils.getSupplyHeader(context))
+
+        call?.enqueue(object : Callback<SupplyModel>
+        {
+            override fun onFailure(call: Call<SupplyModel>, t: Throwable)
+            {
+                mErrorListener.dismissDialog()
+                if (t is NoConnectivityException)
+                {
+                }
+                else
+                {
+                    mErrorListener.addErrorDialog()
+                }
+            }
+
+            override fun onResponse(call: Call<SupplyModel>, response: Response<SupplyModel>)
+            {
+                Log.d(TAG, response.raw()
+                        .toString())
+                if (response?.body() != null)
+                {
+                    mListener.onDataFetch(response.body()!!,false)
+                }
+                else
+                {
+                    if (response.errorBody() != null && response.code() != 400)
+                        mListener.onDataFetch(Gson().fromJson<SupplyModel>(response.errorBody()?.string(), SupplyModel::class.java),true)
+                }
+                mErrorListener.dismissDialog()
+            }
+        })
+    }
+
     interface onCompleteListener
     {
         fun onDataFetch(model: SupplyModel,isError:Boolean)

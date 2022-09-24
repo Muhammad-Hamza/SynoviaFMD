@@ -3,19 +3,18 @@ package com.scanapp.ui
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.app.ActivityCompat
@@ -24,12 +23,11 @@ import androidx.lifecycle.ViewModelProvider
 import com.scanapp.Listeners
 import com.scanapp.R
 import com.scanapp.network.remote.SupplyModel
-import com.scanapp.network.remote.TokenResponse
 import com.scanapp.ui.dashboard.ScannerActivity
 import com.scanapp.ui.product_supply.ProductSupplyViewModel
 
 
-class SupplyProductActivity : AppCompatActivity()
+class VerifyActivity : AppCompatActivity()
 {
 
     private val state: String = "Supplied"
@@ -51,7 +49,7 @@ class SupplyProductActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_supply_product)
+        setContentView(R.layout.activity_verify)
         mViewModel = ViewModelProvider(this).get(ProductSupplyViewModel::class.java)
 
         mViewModel.attachErrorListener(object : Listeners.DialogInteractionListener
@@ -124,6 +122,8 @@ class SupplyProductActivity : AppCompatActivity()
                     }
                     else serialNumber = resultData?.substring(resultData!!.length - 11, resultData!!.length)
 
+                    //                    D/Supply: 01022564353848351725020910000012100000000091
+                    //                    D/Supply: 0102256435384835172502091000001210000000009
 
                     etProductCode.setText(productCode)
                     etSerialNumber.setText(serialNumber)
@@ -176,11 +176,10 @@ class SupplyProductActivity : AppCompatActivity()
         val batch = etBatchNo.text.toString()
         val serialNumber = etSerialNumber.text.toString()
 
-        mViewModel.postSupplyInfo(this, productCode, serialNumber, batch, expiry, state, object : ProductSupplyViewModel.onCompleteListener
+        mViewModel.verifyPack(this, productCode, serialNumber, batch, expiry, object : ProductSupplyViewModel.onCompleteListener
         {
-            override fun onDataFetch(model: SupplyModel,isError:Boolean)
-            {
-//                showMessage(model.information)
+            override fun onDataFetch(model: SupplyModel, isError: Boolean)
+            { //                showMessage(model.information)
                 makeEmptyFields()
 
                 val txtSupplied = findViewById<TextView>(R.id.txtSupplied)
@@ -191,11 +190,12 @@ class SupplyProductActivity : AppCompatActivity()
                 {
                     bg.background = ContextCompat.getDrawable(applicationContext, R.drawable.status_bg_red)
 
-                } else
+                }
+                else
                 {
                     bg.background = ContextCompat.getDrawable(applicationContext, R.drawable.status_bg)
                 }
-                txtInfo.setText(model.warning)
+                txtInfo.setText(model.information)
                 txtSupplied.setText(model.state)
 
             }
