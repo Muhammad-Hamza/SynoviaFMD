@@ -17,7 +17,13 @@ class SupplyActivity : AppCompatActivity()
 
         btnNext.setOnClickListener{
             if(intent.hasExtra("verificationType")){
+                if(intent.extras?.getString("verificationType") == "verify" )
                 launchActivity<VerifyActivity> {  }
+                else{
+                    if(intent.extras?.getString("verificationType") == "fixStatus" )
+                        launchActivity<FixActivity> {  }
+                }
+
             } else
             launchActivity<SupplyProductActivity> {  }
         }

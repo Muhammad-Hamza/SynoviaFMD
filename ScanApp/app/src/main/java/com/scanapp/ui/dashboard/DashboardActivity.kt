@@ -16,6 +16,7 @@ class DashboardActivity : AppCompatActivity()
 
         val llSupply = findViewById<CardView>(R.id.llSupply)
         val verify = findViewById<CardView>(R.id.verify)
+        val fixStatus = findViewById<CardView>(R.id.fixStatus)
 
         llSupply.setOnClickListener{
             launchActivity<SupplyActivity> {  }
@@ -23,6 +24,11 @@ class DashboardActivity : AppCompatActivity()
         verify.setOnClickListener{
             launchActivity<SupplyActivity> {
                 putExtra("verificationType","verify")
+            }
+        }
+        fixStatus.setOnClickListener{
+            launchActivity<SupplyActivity> {
+                putExtra("verificationType","fixStatus")
             }
         }
 

@@ -3,6 +3,7 @@ package com.scanapp.ui.product_supply
 import android.app.Application
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
@@ -68,8 +69,10 @@ class ProductSupplyViewModel(application: Application) : AndroidViewModel(applic
                 }
                 else
                 {
-                    if (response.errorBody() != null)
+                    if (response.errorBody() != null && response.code() != 400)
                         mListener.onDataFetch(Gson().fromJson<SupplyModel>(response.errorBody()?.string(), SupplyModel::class.java),true)
+                    else
+                        Toast.makeText(context,"Wrong State. Please try again with correct Data",Toast.LENGTH_SHORT).show()
                 }
                 mErrorListener.dismissDialog()
             }

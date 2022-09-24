@@ -32,7 +32,7 @@ import com.scanapp.ui.product_supply.ProductSupplyViewModel
 class SupplyProductActivity : AppCompatActivity()
 {
 
-    private val state: String = "Supplied"
+    private var state: String? = null
     lateinit var etProductCode: EditText
     lateinit var etSerialNumber: EditText
     lateinit var etBatchNo: EditText
@@ -54,6 +54,11 @@ class SupplyProductActivity : AppCompatActivity()
         setContentView(R.layout.activity_supply_product)
         mViewModel = ViewModelProvider(this).get(ProductSupplyViewModel::class.java)
 
+        if(intent.hasExtra("FROM_FIX")){
+            state = intent.extras?.getString("State")
+        } else {
+            state = "Supplied"
+        }
         mViewModel.attachErrorListener(object : Listeners.DialogInteractionListener
         {
             override fun dismissDialog()
@@ -176,7 +181,7 @@ class SupplyProductActivity : AppCompatActivity()
         val batch = etBatchNo.text.toString()
         val serialNumber = etSerialNumber.text.toString()
 
-        mViewModel.postSupplyInfo(this, productCode, serialNumber, batch, expiry, state, object : ProductSupplyViewModel.onCompleteListener
+        mViewModel.postSupplyInfo(this, productCode, serialNumber, batch, expiry, state!!, object : ProductSupplyViewModel.onCompleteListener
         {
             override fun onDataFetch(model: SupplyModel,isError:Boolean)
             {
@@ -196,6 +201,10 @@ class SupplyProductActivity : AppCompatActivity()
                     bg.background = ContextCompat.getDrawable(applicationContext, R.drawable.status_bg)
                 }
                 txtInfo.setText(model.warning)
+
+                if(model.information != null && model.information.length > 0){
+                    txtInfo.setText(model.information)
+                }
                 txtSupplied.setText(model.state)
 
             }
