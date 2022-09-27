@@ -186,10 +186,12 @@ class SupplyProductActivity : AppCompatActivity()
             override fun onDataFetch(model: SupplyModel,isError:Boolean)
             {
 //                showMessage(model.information)
-                makeEmptyFields()
+//                makeEmptyFields()
 
                 val txtSupplied = findViewById<TextView>(R.id.txtSupplied)
                 val txtInfo = findViewById<TextView>(R.id.txtInfoValue)
+                val prodName = findViewById<TextView>(R.id.txtProductName)
+                val txtOperationCode = findViewById<TextView>(R.id.txtOperationCode)
                 val bg = findViewById<LinearLayoutCompat>(R.id.llStatus)
                 bg.visibility = View.VISIBLE
                 if (isError)
@@ -201,6 +203,9 @@ class SupplyProductActivity : AppCompatActivity()
                     bg.background = ContextCompat.getDrawable(applicationContext, R.drawable.status_bg)
                 }
                 txtInfo.setText(model.warning)
+                txtOperationCode.setText(model.operationCode)
+                prodName.setText(model.productName)
+
 
                 if(model.information != null && model.information.length > 0){
                     txtInfo.setText(model.information)

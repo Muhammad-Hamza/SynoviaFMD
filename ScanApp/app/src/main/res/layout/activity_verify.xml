@@ -184,8 +184,9 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:background="@drawable/status_bg"
         android:orientation="vertical"
-        android:visibility="gone"
         android:paddingTop="@dimen/_10sdp"
+        android:visibility="gone"
+
         android:paddingBottom="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@+id/llBtns">
 
@@ -207,6 +208,52 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/txtSupplied"
+                android:paddingStart="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Operation Code:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtOperationCode"
+                android:paddingStart="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="Product Name:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtProductName"
                 android:paddingStart="@dimen/_5sdp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />

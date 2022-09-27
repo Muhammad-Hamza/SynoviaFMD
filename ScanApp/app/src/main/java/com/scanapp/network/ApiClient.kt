@@ -18,6 +18,7 @@ object ApiClient
 {
 
     private const val BASE_URL_TESTING = "https://api-ite.nmvo.eu/"
+    private const val BASE_URL_QA = "https://api-ie-iqe.nmvo.eu/"
 
     private lateinit var retrofit: Retrofit
     lateinit var okHttpClient: OkHttpClient
@@ -47,7 +48,7 @@ object ApiClient
 
     private fun getURL(): String
     {
-      return BASE_URL_TESTING
+      return BASE_URL_QA
     }
 
 }

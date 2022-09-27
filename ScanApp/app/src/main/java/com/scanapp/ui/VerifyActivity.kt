@@ -180,11 +180,13 @@ class VerifyActivity : AppCompatActivity()
         {
             override fun onDataFetch(model: SupplyModel, isError: Boolean)
             { //                showMessage(model.information)
-                makeEmptyFields()
+//                makeEmptyFields()
 
                 val txtSupplied = findViewById<TextView>(R.id.txtSupplied)
                 val txtInfo = findViewById<TextView>(R.id.txtInfoValue)
                 val bg = findViewById<LinearLayoutCompat>(R.id.llStatus)
+                val prodName = findViewById<TextView>(R.id.txtProductName)
+                val txtOperationCode = findViewById<TextView>(R.id.txtOperationCode)
                 bg.visibility = View.VISIBLE
                 if (isError)
                 {
@@ -197,6 +199,8 @@ class VerifyActivity : AppCompatActivity()
                 }
                 txtInfo.setText(model.information)
                 txtSupplied.setText(model.state)
+                txtOperationCode.setText(model.operationCode)
+                prodName.setText(model.productName)
 
             }
 
