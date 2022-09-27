@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.cardview.widget.CardView
 import com.scanapp.R
+import com.scanapp.ui.FixActivity
 import com.scanapp.ui.SupplyActivity
+import com.scanapp.ui.VerifyActivity
 import com.scanapp.util.launchActivity
 
 class DashboardActivity : AppCompatActivity()
@@ -22,14 +24,18 @@ class DashboardActivity : AppCompatActivity()
             launchActivity<SupplyActivity> {  }
         }
         verify.setOnClickListener{
-            launchActivity<SupplyActivity> {
-                putExtra("verificationType","verify")
-            }
+//            launchActivity<SupplyActivity> {
+//                putExtra("verificationType","verify")
+//            }
+            launchActivity<VerifyActivity> {  }
+
         }
         fixStatus.setOnClickListener{
-            launchActivity<SupplyActivity> {
-                putExtra("verificationType","fixStatus")
-            }
+//            launchActivity<SupplyActivity> {
+            ////                putExtra("verificationType","fixStatus")
+            ////            }
+            launchActivity<FixActivity> {  }
+
         }
 
     }

@@ -101,6 +101,7 @@ class SupplyProductActivity : AppCompatActivity()
             findViewById<LinearLayoutCompat>(R.id.llStatus).visibility = View.GONE
             val intent = Intent(this, ScannerActivity::class.java)
             someActivityResultLauncher.launch(intent)
+            makeEmptyFields()
         }
     }
 
@@ -192,6 +193,7 @@ class SupplyProductActivity : AppCompatActivity()
                 val txtInfo = findViewById<TextView>(R.id.txtInfoValue)
                 val prodName = findViewById<TextView>(R.id.txtProductName)
                 val txtOperationCode = findViewById<TextView>(R.id.txtOperationCode)
+                val txtAlertId = findViewById<TextView>(R.id.txtAlertId)
                 val bg = findViewById<LinearLayoutCompat>(R.id.llStatus)
                 bg.visibility = View.VISIBLE
                 if (isError)
@@ -205,6 +207,7 @@ class SupplyProductActivity : AppCompatActivity()
                 txtInfo.setText(model.warning)
                 txtOperationCode.setText(model.operationCode)
                 prodName.setText(model.productName)
+                txtAlertId.setText(model.alertId)
 
 
                 if(model.information != null && model.information.length > 0){

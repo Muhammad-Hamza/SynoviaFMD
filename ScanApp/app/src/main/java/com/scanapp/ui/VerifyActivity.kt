@@ -187,6 +187,8 @@ class VerifyActivity : AppCompatActivity()
                 val bg = findViewById<LinearLayoutCompat>(R.id.llStatus)
                 val prodName = findViewById<TextView>(R.id.txtProductName)
                 val txtOperationCode = findViewById<TextView>(R.id.txtOperationCode)
+                val txtAlertId = findViewById<TextView>(R.id.txtAlertId)
+
                 bg.visibility = View.VISIBLE
                 if (isError)
                 {
@@ -201,6 +203,7 @@ class VerifyActivity : AppCompatActivity()
                 txtSupplied.setText(model.state)
                 txtOperationCode.setText(model.operationCode)
                 prodName.setText(model.productName)
+                txtAlertId.setText(model.alertId)
 
             }
 

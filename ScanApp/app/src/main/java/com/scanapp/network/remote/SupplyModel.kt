@@ -6,6 +6,9 @@ data class SupplyModel(
     val operationCode: String,
     val information: String,
     val state: String,
+    @SerializedName("alertId")
+    val alertId: String,
+
     val productName: String,
     val canReactivate: Boolean,
     @SerializedName("warning")
