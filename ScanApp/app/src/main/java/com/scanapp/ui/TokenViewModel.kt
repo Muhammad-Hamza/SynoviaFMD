@@ -20,6 +20,11 @@ import retrofit2.Callback
 class TokenViewModel(application: Application) : AndroidViewModel(application)
 {
 
+    val CLIENT_CRED_TE ="rZFse0cCPCuQkkNy1Lpm09Gr"
+    val CLIENT_ID_TE ="MzkX7fY5QjMLRFgo33XLkpPf"
+    val CLIENT_CRED_QA ="45ff8705-a9cf-4153-b921-cacf01a73965"
+    val CLIENT_ID_QA ="ac6f57ed-6759-4c6e-9668-139ae5f5fc45"
+
     private lateinit var mErrorListener: Listeners.DialogInteractionListener
 
     fun attachErrorListener(mErrorListener: Listeners.DialogInteractionListener)
@@ -37,7 +42,7 @@ class TokenViewModel(application: Application) : AndroidViewModel(application)
         mErrorListener.addDialog()
         val apiService = ApiClient.client(context).create(ApiInterface::class.java)
         Log.d(TAG, "===============LOGGING===============")
-        var call = apiService.getToken("client_credentials", "MzkX7fY5QjMLRFgo33XLkpPf", "rZFse0cCPCuQkkNy1Lpm09Gr")
+        var call = apiService.getToken("client_credentials", CLIENT_ID_QA, CLIENT_CRED_QA)
 
         call?.enqueue(object : Callback<TokenResponse>
         {

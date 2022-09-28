@@ -201,9 +201,13 @@ class VerifyActivity : AppCompatActivity()
                 }
                 txtInfo.setText(model.information)
                 txtSupplied.setText(model.state)
-                txtOperationCode.setText(model.operationCode)
-                prodName.setText(model.productName)
-                txtAlertId.setText(model.alertId)
+                if(model.operationCode != null && model.operationCode.length > 0)
+                    txtOperationCode.setText(model.operationCode)
+                if(model.productName != null && model.productName.length > 0)
+                    prodName.setText(model.productName)
+
+                if(model.alertId != null && model.alertId.length > 0)
+                    txtAlertId.setText(model.alertId)
 
             }
 
