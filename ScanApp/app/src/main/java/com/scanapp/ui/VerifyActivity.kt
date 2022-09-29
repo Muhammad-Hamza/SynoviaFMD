@@ -3,6 +3,7 @@ package com.scanapp.ui
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -15,6 +16,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.app.ActivityCompat
@@ -107,6 +109,7 @@ class VerifyActivity : AppCompatActivity()
 
             if (!TextUtils.isEmpty(resultData))
             {
+                readGS1(resultData!!)
 
                 try
                 {
@@ -213,6 +216,31 @@ class VerifyActivity : AppCompatActivity()
 
         })
 
+    }
+
+    private fun readGS1(data:String){
+        var previousChar = ""
+        var productCode = ""
+        var index = 1
+        data.chars().forEach{
+            var currentChar = it.toChar()
+
+            if(currentChar + previousChar == "01"){
+               var startingIndex =  index+1
+                productCode = data.substring(startingIndex, startingIndex + 17)
+
+                Log.d("ProductCode", "found prod code" + productCode)
+            } else if(currentChar + previousChar == "21"){
+
+            }else if(currentChar + previousChar == "17"){
+
+            }else if(currentChar + previousChar == "10"){
+
+            }
+
+            previousChar = it.toChar().toString()
+            index++
+        }
     }
 
 }
