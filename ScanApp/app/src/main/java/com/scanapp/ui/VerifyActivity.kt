@@ -22,8 +22,11 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import com.google.gson.Gson
 import com.scanapp.Listeners
 import com.scanapp.R
+import com.scanapp.gs1.FieldAI
+import com.scanapp.gs1.FieldsAI
 import com.scanapp.network.remote.SupplyModel
 import com.scanapp.ui.dashboard.ScannerActivity
 import com.scanapp.ui.product_supply.ProductSupplyViewModel
@@ -77,15 +80,10 @@ class VerifyActivity : AppCompatActivity()
         val btnScanpak = findViewById<AppCompatButton>(R.id.btnScanpak)
         val btnComplete = findViewById<AppCompatButton>(R.id.btnComplete)
         initView()
-        val text = "01022564353848351725020910000012100000000031"
-        val productCode = text.substring(3, 17)
-        val expiry = text.substring(19, 25)
-        val batch = text.substring(27, 32)
-        val serialNumber = text.substring(text.length - 11, text.length)
 
 
         btnComplete.setOnClickListener {
-            finish()
+//            finish()
         }
         btnScanpak.setOnClickListener {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
@@ -101,60 +99,72 @@ class VerifyActivity : AppCompatActivity()
 
     // You can do the assignment inside onAttach or onCreate, i.e, before the activity is displayed
     var someActivityResultLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(ActivityResultContracts.StartActivityForResult(), ActivityResultCallback<ActivityResult> { result: ActivityResult ->
-        if (result.resultCode === RESULT_OK)
-        { // There are no request codes
+        if (result.resultCode === RESULT_OK) { // There are no request codes
             val data: Intent = result.getData()!!
-            val resultData = data.getStringExtra("result")
+            var resultData = data.getStringExtra("result")
 
+            if (resultData != null) {
+                parseGS1(resultData)
+            }
 
-            if (!TextUtils.isEmpty(resultData))
-            {
-                readGS1(resultData!!)
+        }
 
-                try
-                {
-                    Log.d("Supply", resultData!!.toString())
-                    val productCode = resultData?.substring(3, 17)
-                    val expiry = resultData?.substring(19, 25)
-                    val batch = resultData?.substring(27, 32)
-                    var serialNumber = "0"
-                    if (resultData.length == 45)
-                    {
-                        serialNumber = resultData?.substring(resultData!!.length - 10, resultData!!.length)
+    })
 
+    private fun parseGS1(resultData: String) {
+
+        if (!TextUtils.isEmpty(resultData)) {
+            try {
+                Log.d("Supply", resultData!!.toString())
+
+                val splittedResult = resultData.split(resultData.toCharArray().get(0))
+
+                var fieldList = mutableListOf<FieldsAI>()
+                for (s in splittedResult) {
+                    if (!s.isEmpty()) {
+                        fieldList.add(FieldsAI.from(s))
                     }
-                    else serialNumber = resultData?.substring(resultData!!.length - 11, resultData!!.length)
+                }
+                Log.d("Supply", Gson().toJson(resultData))
 
-                    //                    D/Supply: 01022564353848351725020910000012100000000091
-                    //                    D/Supply: 0102256435384835172502091000001210000000009
+                var productCode: FieldAI? =null
+                var batch : FieldAI? =null
+                var serialNumber : FieldAI? =null
+                var expiry : FieldAI? =null
+                for (ai in fieldList) {
 
-                    etProductCode.setText(productCode)
-                    etSerialNumber.setText(serialNumber)
-                    etBatchNo.setText(batch)
-                    etExpiry.setText(expiry)
-
-                    hitAPIRequest()
-                } catch (ex: Exception)
-                {
-                    Toast.makeText(this, "Invalid Data Try to scan again", Toast.LENGTH_SHORT)
-                            .show()
+                    if (productCode == null)
+                        productCode = ai.list.firstOrNull { it.ai.ai == "01" }
+                    if (batch == null)
+                        batch = ai.list.firstOrNull { it.ai.ai == "10" }
+                    if (serialNumber == null)
+                        serialNumber = ai.list.firstOrNull { it.ai.ai == "21" }
+                    if (expiry == null)
+                        expiry = ai.list.firstOrNull { it.ai.ai == "17" }
                 }
 
-                Toast.makeText(this, resultData, Toast.LENGTH_SHORT)
-                        .show()
+                etProductCode.setText(productCode?.textBody)
+                etSerialNumber.setText(serialNumber?.textBody)
+                etBatchNo.setText(batch?.textBody)
+                etExpiry.setText(expiry?.textBody)
+
+
+                Log.d("SUPPLY", productCode?.textBody.toString())
+                Log.d("SUPPLY", serialNumber?.textBody.toString())
+                Log.d("SUPPLY", batch?.textBody.toString())
+                Log.d("SUPPLY", expiry?.textBody.toString())
+                hitAPIRequest()
+            } catch (ex: Exception) {
+                Toast.makeText(this, "Invalid Data Try to scan again", Toast.LENGTH_SHORT)
+                    .show()
             }
-            else
-            {
-                Toast.makeText(this, "Data not found", Toast.LENGTH_SHORT)
-                        .show()
-                makeEmptyFields()
-            }
-        }
-        else
-        {
+
+        } else {
+            Toast.makeText(this, "Data not found", Toast.LENGTH_SHORT)
+                .show()
             makeEmptyFields()
         }
-    })
+    }
 
     private fun makeEmptyFields()
     {
@@ -202,8 +212,9 @@ class VerifyActivity : AppCompatActivity()
                 {
                     bg.background = ContextCompat.getDrawable(applicationContext, R.drawable.status_bg)
                 }
-                txtInfo.setText(model.information)
                 txtSupplied.setText(model.state)
+                txtInfo.setText(model.warning)
+
                 if(model.operationCode != null && model.operationCode.length > 0)
                     txtOperationCode.setText(model.operationCode)
                 if(model.productName != null && model.productName.length > 0)
@@ -212,35 +223,14 @@ class VerifyActivity : AppCompatActivity()
                 if(model.alertId != null && model.alertId.length > 0)
                     txtAlertId.setText(model.alertId)
 
+
+                if (model.information != null && model.information.length > 0) {
+                    txtInfo.setText(model.information)
+                }
+
             }
 
         })
 
     }
-
-    private fun readGS1(data:String){
-        var previousChar = ""
-        var productCode = ""
-        var index = 1
-        data.chars().forEach{
-            var currentChar = it.toChar()
-
-            if(currentChar + previousChar == "01"){
-               var startingIndex =  index+1
-                productCode = data.substring(startingIndex, startingIndex + 17)
-
-                Log.d("ProductCode", "found prod code" + productCode)
-            } else if(currentChar + previousChar == "21"){
-
-            }else if(currentChar + previousChar == "17"){
-
-            }else if(currentChar + previousChar == "10"){
-
-            }
-
-            previousChar = it.toChar().toString()
-            index++
-        }
-    }
-
 }
