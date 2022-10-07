@@ -113,7 +113,12 @@ class SupplyProductActivity : AppCompatActivity() {
                 val data: Intent = result.getData()!!
                 val resultData = data.getStringExtra("result")
                 if (resultData != null) {
-                    parseGS1(resultData)
+                    try{
+                        parseGS1(resultData)
+
+                    } catch (ex:Exception){
+
+                    }
                 }
             } else {
                 makeEmptyFields()

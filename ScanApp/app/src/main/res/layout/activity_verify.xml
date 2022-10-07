@@ -1,314 +1,318 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.SupplyProductActivity">
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llProductCode"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:orientation="vertical"
-        android:paddingStart="@dimen/_20sdp"
-        android:paddingTop="@dimen/_20sdp"
-        android:paddingEnd="@dimen/_20sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.SupplyProductActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Product Code"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/etProductCode"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llProductCode"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_32sdp"
-            android:layout_below="@+id/txt_main"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:background="@drawable/edit_text_bg"
-            android:gravity="top|start"
-            android:inputType="text"
-            android:maxLines="1"
-            android:padding="@dimen/_5sdp"
-            android:textColor="@color/txtGrey"
-            android:textSize="@dimen/_8sdp" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llSerialNo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingStart="@dimen/_20sdp"
-        android:paddingTop="@dimen/_10sdp"
-        android:paddingEnd="@dimen/_20sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llProductCode">
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Serial No"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp"
-            android:textStyle="bold" />
+            android:layout_marginTop="@dimen/_30sdp"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingTop="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/etSerialNumber"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Product Code"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etProductCode"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_below="@+id/txt_main"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="top|start"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/txtGrey"
+                android:textSize="@dimen/_8sdp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llSerialNo"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_32sdp"
-            android:layout_below="@+id/txt_main"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:background="@drawable/edit_text_bg"
-            android:gravity="top|start"
-            android:inputType="text"
-            android:maxLines="1"
-            android:padding="@dimen/_5sdp"
-            android:textColor="@color/txtGrey"
-            android:textSize="@dimen/_8sdp" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llBatchNo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingStart="@dimen/_20sdp"
-        android:paddingEnd="@dimen/_20sdp"
-        android:paddingBottom="@dimen/_10sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llSerialNo">
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Batch No"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llProductCode">
 
-        <EditText
-            android:id="@+id/etBatchNo"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Serial No"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etSerialNumber"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_below="@+id/txt_main"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="top|start"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/txtGrey"
+                android:textSize="@dimen/_8sdp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llBatchNo"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_32sdp"
-            android:layout_below="@+id/txt_main"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:background="@drawable/edit_text_bg"
-            android:gravity="top|start"
-            android:inputType="text"
-            android:maxLines="1"
-            android:padding="@dimen/_5sdp"
-            android:textColor="@color/txtGrey"
-            android:textSize="@dimen/_8sdp" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llExpiry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingStart="@dimen/_20sdp"
-        android:paddingEnd="@dimen/_20sdp"
-        android:paddingBottom="@dimen/_20sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llBatchNo">
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Expiry"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llSerialNo">
 
-        <EditText
-            android:id="@+id/etExpiry"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Batch No"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etBatchNo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_below="@+id/txt_main"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="top|start"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/txtGrey"
+                android:textSize="@dimen/_8sdp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llExpiry"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_32sdp"
-            android:layout_below="@+id/txt_main"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:background="@drawable/edit_text_bg"
-            android:gravity="top|start"
-            android:inputType="text"
-            android:maxLines="1"
-            android:padding="@dimen/_5sdp"
-            android:textColor="@color/txtGrey"
-            android:textSize="@dimen/_8sdp" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llBtns"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        app:layout_constraintTop_toBottomOf="@id/llExpiry">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnScanpak"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:layout_weight="1"
-            android:background="#A2C1E5"
-            android:text="Scan pack"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_18sdp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnComplete"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
-            android:layout_weight="1"
-            android:background="#66FF33"
-            android:text="Complete"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_18sdp" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/llStatus"
-        android:layout_margin="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:background="@drawable/status_bg"
-        android:orientation="vertical"
-        android:visibility="gone"
-        android:paddingTop="@dimen/_10sdp"
-        android:paddingBottom="@dimen/_10sdp"
-        app:layout_constraintTop_toBottomOf="@+id/llBtns">
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_20sdp"
+            android:paddingEnd="@dimen/_20sdp"
+            android:paddingBottom="@dimen/_20sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llBatchNo">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:text="Status:"
+                android:text="Expiry"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
+                android:textSize="@dimen/_16sdp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtSupplied"
-                android:paddingStart="@dimen/_5sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp" />
-
+            <EditText
+                android:id="@+id/etExpiry"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_below="@+id/txt_main"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="top|start"
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/txtGrey"
+                android:textSize="@dimen/_8sdp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
+
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
+            android:id="@+id/llBtns"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintTop_toBottomOf="@id/llExpiry">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnScanpak"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
                 android:layout_marginStart="@dimen/_20sdp"
-                android:text="Operation Code:"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
-                android:textStyle="bold" />
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:background="#A2C1E5"
+                android:text="Scan pack"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_18sdp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtOperationCode"
-                android:paddingStart="@dimen/_5sdp"
-                android:text="N/A"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:text="Product Name:"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtProductName"
-                android:text="N/A"
-                android:paddingStart="@dimen/_5sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp" />
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:text="Alert ID:"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtAlertId"
-                android:text="N/A"
-                android:paddingStart="@dimen/_5sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnComplete"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_weight="1"
+                android:background="#66FF33"
+                android:text="Complete"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_18sdp" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:id="@+id/llStatus"
+            android:layout_margin="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/status_bg"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:paddingTop="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@+id/llBtns">
 
-            <TextView
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:text="Info:"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/txtInfoValue"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Status:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtSupplied"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="@dimen/_5sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp" />
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Operation Code:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtOperationCode"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Product Name:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtProductName"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Alert ID:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txtAlertId"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:text="Info:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtInfoValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
 

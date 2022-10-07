@@ -28,6 +28,13 @@ class FixActivity : AppCompatActivity()
 
                 putExtra("State","Stolen")
             }}
+
+        binding.llReactivate.setOnClickListener{
+            launchActivity<SupplyProductActivity> {
+                putExtra("FROM_FIX","YES")
+
+                putExtra("State","Active")
+            }}
         binding.llReactivatePack.setOnClickListener{
             launchActivity<SupplyProductActivity> {
                 putExtra("FROM_FIX","YES")

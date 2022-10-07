@@ -104,9 +104,13 @@ class VerifyActivity : AppCompatActivity()
             var resultData = data.getStringExtra("result")
 
             if (resultData != null) {
-                parseGS1(resultData)
-            }
+                try{
+                    parseGS1(resultData)
 
+                } catch (ex:Exception){
+
+                }
+            }
         }
 
     })
