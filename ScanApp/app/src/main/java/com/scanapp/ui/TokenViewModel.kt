@@ -44,7 +44,7 @@ class TokenViewModel(application: Application) : AndroidViewModel(application)
         mErrorListener.addDialog()
         val apiService = ApiClient.client(context).create(ApiInterface::class.java)
         Log.d(TAG, "===============LOGGING===============")
-        var call = apiService.getToken("client_credentials", CLIENT_ID_QA, CLIENT_CRED_QA)
+        var call = apiService.getToken("client_credentials", CLIENT_ID_TE, CLIENT_CRED_TE)
 
         call?.enqueue(object : Callback<TokenResponse>
         {

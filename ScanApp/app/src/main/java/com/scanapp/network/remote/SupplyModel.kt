@@ -8,7 +8,10 @@ data class SupplyModel(
     val state: String,
     @SerializedName("alertId")
     val alertId: String,
-
+    @SerializedName("alertCode")
+    val alertCode: String,
+    @SerializedName("amsLink")
+    val amsLink: String,
     val productName: String,
     val canReactivate: Boolean,
     @SerializedName("warning")

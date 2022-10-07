@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.TextUtils
+import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.View
 import android.widget.EditText
@@ -162,6 +163,8 @@ class SupplyProductActivity : AppCompatActivity() {
                     val prodName = findViewById<TextView>(R.id.txtProductName)
                     val txtOperationCode = findViewById<TextView>(R.id.txtOperationCode)
                     val txtAlertId = findViewById<TextView>(R.id.txtAlertId)
+                    val txtAlertCode = findViewById<TextView>(R.id.txtAlertCode)
+                    val txtAmsLink = findViewById<TextView>(R.id.txtAmsLink)
                     val bg = findViewById<LinearLayoutCompat>(R.id.llStatus)
                     bg.visibility = View.VISIBLE
                     if (isError) {
@@ -180,6 +183,15 @@ class SupplyProductActivity : AppCompatActivity() {
                     if (model.alertId != null && model.alertId.length > 0) {
 
                         txtAlertId.setText(model.alertId)
+                    }
+
+                    if (model.alertCode != null && model.alertCode.length > 0) {
+
+                        txtAlertCode.setText(model.alertCode)
+                    }
+                    if (model.amsLink != null && model.amsLink.length > 0) {
+                        txtAmsLink.setMovementMethod(LinkMovementMethod.getInstance())
+                        txtAmsLink.setText(model.amsLink)
                     }
 
                     if (model.information != null && model.information.length > 0) {
