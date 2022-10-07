@@ -36,10 +36,14 @@ class VerifyActivity : AppCompatActivity()
 {
 
     private val state: String = "Supplied"
+    private val greenColor: String = "#00B050"
+    private val redColor: String = "#FF0000"
+    private val amberColor: String = "#FFC000"
     lateinit var etProductCode: EditText
     lateinit var etSerialNumber: EditText
     lateinit var etBatchNo: EditText
     lateinit var etExpiry: EditText
+    private val map = hashMapOf<String,String>()
 
     private lateinit var mViewModel: ProductSupplyViewModel
 
@@ -227,7 +231,6 @@ class VerifyActivity : AppCompatActivity()
                 if(model.alertId != null && model.alertId.length > 0)
                     txtAlertId.setText(model.alertId)
 
-
                 if (model.information != null && model.information.length > 0) {
                     txtInfo.setText(model.information)
                 }
@@ -236,5 +239,11 @@ class VerifyActivity : AppCompatActivity()
 
         })
 
+    }
+
+    fun prepareForColors(){
+        map.put("",amberColor)
+        map.put("",greenColor)
+        map.put("",redColor)
     }
 }
