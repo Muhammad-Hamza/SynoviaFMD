@@ -3,6 +3,7 @@ package com.scanapp.ui
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.LinkMovementMethod
@@ -41,6 +42,10 @@ class SupplyProductActivity : AppCompatActivity() {
     lateinit var etSerialNumber: EditText
     lateinit var etBatchNo: EditText
     lateinit var etExpiry: EditText
+    private val map = hashMapOf<String,String>()
+    private val greenColor: String = "#00B050"
+    private val redColor: String = "#FF0000"
+    private val amberColor: String = "#FFC000"
 
     private lateinit var mViewModel: ProductSupplyViewModel
 
@@ -54,6 +59,8 @@ class SupplyProductActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_supply_product)
+        prepareForColors()
+
         mViewModel = ViewModelProvider(this).get(ProductSupplyViewModel::class.java)
 
         if (intent.hasExtra("FROM_FIX")) {
@@ -167,13 +174,19 @@ class SupplyProductActivity : AppCompatActivity() {
                     val txtAmsLink = findViewById<TextView>(R.id.txtAmsLink)
                     val bg = findViewById<LinearLayoutCompat>(R.id.llStatus)
                     bg.visibility = View.VISIBLE
-                    if (isError) {
-                        bg.background =
-                            ContextCompat.getDrawable(applicationContext, R.drawable.status_bg_red)
+                    val color = map[model.operationCode]
+                    if(color != null && color.length > 1){
+                        bg.setBackgroundColor(Color.parseColor(color))
 
                     } else {
-                        bg.background =
-                            ContextCompat.getDrawable(applicationContext, R.drawable.status_bg)
+                        if (isError) {
+                            bg.background =
+                                ContextCompat.getDrawable(applicationContext, R.drawable.status_bg_red)
+
+                        } else {
+                            bg.background =
+                                ContextCompat.getDrawable(applicationContext, R.drawable.status_bg)
+                        }
                     }
                     txtInfo.setText(model.warning)
                     txtOperationCode.setText(model.operationCode)
@@ -261,6 +274,177 @@ class SupplyProductActivity : AppCompatActivity() {
                 .show()
             makeEmptyFields()
         }
+    }
+    fun prepareForColors(){
+        map.put("11110201",amberColor)
+        map.put("11110201",amberColor)
+        map.put("11411100",amberColor)
+        map.put("10010000",greenColor)
+        map.put("11110100",greenColor)
+        map.put("11210200",greenColor)
+        map.put("11310300",greenColor)
+        map.put("11310400",greenColor)
+        map.put("11310400",greenColor)
+        map.put("11310500",greenColor)
+        map.put("11310600",greenColor)
+        map.put("11310700",greenColor)
+        map.put("11310700",greenColor)
+        map.put("11310800",greenColor)
+        map.put("11310800",greenColor)
+        map.put("11410100",greenColor)
+        map.put("11420100",greenColor)
+        map.put("12200000",greenColor)
+        map.put("14000000",greenColor)
+        map.put("14100000",greenColor)
+        map.put("22100000",greenColor)
+        map.put("51420100",greenColor)
+        map.put("51420101",greenColor)
+        map.put("11110200",greenColor)
+        map.put("30020000",redColor)
+        map.put("51420200",redColor)
+        map.put("51420201",redColor)
+        map.put("51420300",redColor)
+        map.put("51420301",redColor)
+        map.put("51420400",redColor)
+        map.put("51420401",redColor)
+        map.put("51420500",redColor)
+        map.put("51420501",redColor)
+        map.put("51420600",redColor)
+        map.put("51420601",redColor)
+        map.put("51420700",redColor)
+        map.put("51420800",redColor)
+        map.put("51420801",redColor)
+        map.put("51420801",redColor)
+        map.put("51420900",redColor)
+        map.put("51421000",redColor)
+        map.put("51421000",redColor)
+        map.put("30020000",redColor)
+        map.put("11411000",redColor)
+        map.put("11411200",redColor)
+        map.put("11110300",redColor)
+        map.put("11110301",redColor)
+        map.put("11110400",redColor)
+        map.put("11110500",redColor)
+        map.put("11110600",redColor)
+        map.put("11110700",redColor)
+        map.put("11110701",redColor)
+        map.put("11110800",redColor)
+        map.put("11110900",redColor)
+        map.put("11111000",redColor)
+        map.put("11111200",redColor)
+        map.put("11111200",redColor)
+        map.put("41020001",redColor)
+        map.put("41020002",redColor)
+        map.put("41020003",redColor)
+        map.put("41020005",redColor)
+        map.put("51020200",redColor)
+        map.put("51220000",redColor)
+        map.put("51220200",redColor)
+        map.put("51220201",redColor)
+        map.put("51220300",redColor)
+        map.put("51220301",redColor)
+        map.put("51220400",redColor)
+        map.put("51220401",redColor)
+        map.put("51220500",redColor)
+        map.put("51220501",redColor)
+        map.put("51220600",redColor)
+        map.put("51220601",redColor)
+        map.put("51220700",redColor)
+        map.put("51220701",redColor)
+        map.put("51220800",redColor)
+        map.put("51220801",redColor)
+        map.put("51220801",redColor)
+        map.put("51220900",redColor)
+        map.put("51221000",redColor)
+        map.put("51221200",redColor)
+        map.put("51320000",redColor)
+        map.put("51320200",redColor)
+        map.put("51320201",redColor)
+        map.put("51320300",redColor)
+        map.put("51320301",redColor)
+        map.put("51320400",redColor)
+        map.put("51320401",redColor)
+        map.put("51320500",redColor)
+        map.put("51320501",redColor)
+        map.put("51320600",redColor)
+        map.put("51320601",redColor)
+        map.put("51320700",redColor)
+        map.put("51320701",redColor)
+        map.put("51320800",redColor)
+        map.put("51320801",redColor)
+        map.put("51320900",redColor)
+        map.put("51320900",redColor)
+        map.put("51321000",redColor)
+        map.put("51321200",redColor)
+        map.put("51420001",redColor)
+        map.put("51420000",redColor)
+        map.put("51420002",redColor)
+        map.put("51421200",redColor)
+        map.put("52120000",redColor)
+        map.put("52120000",redColor)
+        map.put("62120003",redColor)
+        map.put("70020000",redColor)
+        map.put("B0020000",redColor)
+        map.put("B1020000",amberColor)
+        map.put("C0020001",amberColor)
+        map.put("C0020002",amberColor)
+        map.put("C0020003",redColor)
+        map.put("D0020000",redColor)
+        map.put("51421100",amberColor)
+        map.put("62120005",amberColor)
+        map.put("62120004",amberColor)
+        map.put("62120006",amberColor)
+        map.put("62120007",amberColor)
+        map.put("64120000",amberColor)
+        map.put("64120001",amberColor)
+        map.put("62120007",amberColor)
+        map.put("52210000",amberColor)
+        map.put("54120000",amberColor)
+        map.put("61020000",amberColor)
+        map.put("61020001",amberColor)
+        map.put("61020002",amberColor)
+        map.put("61020003",amberColor)
+        map.put("61020004",amberColor)
+        map.put("61020005",amberColor)
+        map.put("61020008",amberColor)
+        map.put("61020009",amberColor)
+        map.put("61020010",amberColor)
+        map.put("61020012",amberColor)
+        map.put("61020013",amberColor)
+        map.put("61020014",amberColor)
+        map.put("61020015",amberColor)
+        map.put("62120001",amberColor)
+        map.put("62120002",amberColor)
+        map.put("51321100",amberColor)
+        map.put("51421100",amberColor)
+        map.put("11111100",amberColor)
+        map.put("51221100",amberColor)
+        map.put("42220000",amberColor)
+        map.put("44020001",amberColor)
+        map.put("41020002",amberColor)
+        map.put("41020003",amberColor)
+        map.put("41020004",amberColor)
+        map.put("11220200",amberColor)
+        map.put("11220201",amberColor)
+        map.put("11220201",amberColor)
+        map.put("11110601",amberColor)
+        map.put("11110601",amberColor)
+        map.put("11110801",amberColor)
+        map.put("11110501",amberColor)
+        map.put("11110401",amberColor)
+        map.put("11320300",amberColor)
+        map.put("11320301",amberColor)
+        map.put("11320400",amberColor)
+        map.put("11320401",amberColor)
+        map.put("11320500",amberColor)
+        map.put("11320501",amberColor)
+        map.put("11320600",amberColor)
+        map.put("11320601",amberColor)
+        map.put("11320700",amberColor)
+        map.put("11320701",amberColor)
+        map.put("11320801",amberColor)
+        map.put("11320800",amberColor)
+        map.put("11320800",amberColor)
     }
 
 }
