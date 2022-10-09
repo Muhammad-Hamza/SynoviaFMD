@@ -10,6 +10,14 @@ data class SupplyModel(
     val alertId: String,
     @SerializedName("alertCode")
     val alertCode: String,
+    @SerializedName("canReactivateUntil")
+    val canReactivateUntil: String,
+    @SerializedName("isIntermarket")
+    val isIntermarket: String,
+    @SerializedName("productWithdrawalReason")
+    val productWithdrawalReason: String,
+    @SerializedName("batchRecallReason")
+    val batchRecallReason: String,
     @SerializedName("amsLink")
     val amsLink: String,
     val productName: String,

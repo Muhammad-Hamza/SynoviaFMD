@@ -22,10 +22,13 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.gson.Gson
 import com.scanapp.Listeners
 import com.scanapp.R
+import com.scanapp.databinding.ActivityFixBinding
+import com.scanapp.databinding.ActivitySupplyProductBinding
 import com.scanapp.gs1.FieldAI
 import com.scanapp.gs1.FieldsAI
 import com.scanapp.network.remote.SupplyModel
@@ -46,6 +49,7 @@ class SupplyProductActivity : AppCompatActivity() {
     private val greenColor: String = "#00B050"
     private val redColor: String = "#FF0000"
     private val amberColor: String = "#FFC000"
+    private lateinit var binding: ActivitySupplyProductBinding
 
     private lateinit var mViewModel: ProductSupplyViewModel
 
@@ -58,8 +62,8 @@ class SupplyProductActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_supply_product)
         prepareForColors()
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_supply_product)
 
         mViewModel = ViewModelProvider(this).get(ProductSupplyViewModel::class.java)
 
@@ -173,6 +177,13 @@ class SupplyProductActivity : AppCompatActivity() {
                     val txtAlertCode = findViewById<TextView>(R.id.txtAlertCode)
                     val txtAmsLink = findViewById<TextView>(R.id.txtAmsLink)
                     val bg = findViewById<LinearLayoutCompat>(R.id.llStatus)
+                    val batchRecallReason = findViewById<TextView>(R.id.txtBatchRecallReason)
+                    val canReactive = findViewById<TextView>(R.id.txtCanReactivate)
+                    val isInterMarket = findViewById<TextView>(R.id.txtIsInterMarket)
+                    val txtCanReactivateUntill = findViewById<TextView>(R.id.txtCanReactivateUntil)
+                    val txtproductWithDrawalReason = findViewById<TextView>(R.id.txtProductWithdrawal)
+
+
                     bg.visibility = View.VISIBLE
                     val color = map[model.operationCode]
                     if(color != null && color.length > 1){
@@ -203,12 +214,59 @@ class SupplyProductActivity : AppCompatActivity() {
                         txtAlertCode.setText(model.alertCode)
                     }
                     if (model.amsLink != null && model.amsLink.length > 0) {
+                        binding.txtLink.visibility = View.VISIBLE
+                        binding.txtAmsLink.visibility = View.VISIBLE
                         txtAmsLink.setMovementMethod(LinkMovementMethod.getInstance())
                         txtAmsLink.setText(model.amsLink)
+                    } else {
+                        binding.txtLink.visibility = View.GONE
+                        binding.txtAmsLink.visibility = View.GONE
                     }
 
                     if (model.information != null && model.information.length > 0) {
                         txtInfo.setText(model.information)
+                    }
+
+                    if (model.productWithdrawalReason != null && model.productWithdrawalReason.length > 0) {
+                        txtproductWithDrawalReason.visibility = View.VISIBLE
+                        binding.productWithdrawalHeading.visibility = View.VISIBLE
+
+                        txtproductWithDrawalReason.setText(model.productWithdrawalReason)
+                    } else {
+                        binding.productWithdrawalHeading.visibility = View.GONE
+                        txtproductWithDrawalReason.visibility = View.GONE
+                    }
+                    if (model.canReactivate != null && model.canReactivate) {
+                        binding.canReactivateHeading.visibility = View.VISIBLE
+                        canReactive.visibility = View.VISIBLE
+                        canReactive.setText(model.canReactivate.toString())
+                    } else {
+                        canReactive.visibility = View.GONE
+                        binding.canReactivateHeading.visibility = View.GONE
+                    }
+                    if (model.batchRecallReason != null && model.batchRecallReason.isNotEmpty()) {
+                        binding.batchRecall.visibility = View.VISIBLE
+                        batchRecallReason.visibility = View.VISIBLE
+                        batchRecallReason.setText(model.batchRecallReason)
+                    } else {
+                        binding.batchRecall.visibility = View.GONE
+                        batchRecallReason.visibility = View.GONE
+                    }
+                    if (model.isIntermarket != null && model.isIntermarket.isNotEmpty()) {
+                        binding.isInterMarkerHeading.visibility = View.VISIBLE
+                        isInterMarket.visibility = View.VISIBLE
+                        isInterMarket.setText(model.isIntermarket)
+                    } else {
+                        binding.isInterMarkerHeading.visibility = View.GONE
+                        isInterMarket.visibility = View.GONE
+                    }
+                    if (model.canReactivateUntil != null && model.canReactivateUntil.isNotEmpty()) {
+                        binding.canReactivateUntilHeading.visibility = View.VISIBLE
+                        txtCanReactivateUntill.visibility = View.VISIBLE
+                        txtCanReactivateUntill.setText(model.canReactivateUntil)
+                    } else {
+                        binding.canReactivateUntilHeading.visibility = View.GONE
+                        txtCanReactivateUntill.visibility = View.GONE
                     }
                     txtSupplied.setText(model.state)
 
