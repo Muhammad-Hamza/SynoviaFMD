@@ -357,7 +357,7 @@ class SupplyProductActivity : AppCompatActivity() {
         map.put("22100000",greenColor)
         map.put("51420100",greenColor)
         map.put("51420101",greenColor)
-        map.put("11110200",greenColor)
+        map.put("11110200",redColor)
         map.put("30020000",redColor)
         map.put("51420200",redColor)
         map.put("51420201",redColor)
@@ -446,6 +446,7 @@ class SupplyProductActivity : AppCompatActivity() {
         map.put("B1020000",amberColor)
         map.put("C0020001",amberColor)
         map.put("C0020002",amberColor)
+        map.put("41020000",amberColor)
         map.put("C0020003",redColor)
         map.put("D0020000",redColor)
         map.put("51421100",amberColor)
@@ -479,8 +480,8 @@ class SupplyProductActivity : AppCompatActivity() {
         map.put("51221100",amberColor)
         map.put("42220000",amberColor)
         map.put("44020001",amberColor)
-        map.put("41020002",amberColor)
-        map.put("41020003",amberColor)
+        map.put("41020002",redColor)
+        map.put("41020003",redColor)
         map.put("41020004",amberColor)
         map.put("11220200",amberColor)
         map.put("11220201",amberColor)
@@ -504,5 +505,4 @@ class SupplyProductActivity : AppCompatActivity() {
         map.put("11320800",amberColor)
         map.put("11320800",amberColor)
     }
-
 }
