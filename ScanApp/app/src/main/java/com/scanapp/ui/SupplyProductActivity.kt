@@ -4,13 +4,13 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.util.Log
 import android.view.View
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
@@ -27,15 +27,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.gson.Gson
 import com.scanapp.Listeners
 import com.scanapp.R
-import com.scanapp.databinding.ActivityFixBinding
 import com.scanapp.databinding.ActivitySupplyProductBinding
 import com.scanapp.gs1.FieldAI
 import com.scanapp.gs1.FieldsAI
 import com.scanapp.network.remote.SupplyModel
-import com.scanapp.network.remote.TokenResponse
 import com.scanapp.ui.dashboard.ScannerActivity
 import com.scanapp.ui.product_supply.ProductSupplyViewModel
-import java.lang.reflect.Field
+import java.nio.charset.Charset
+import java.nio.charset.StandardCharsets
 
 
 class SupplyProductActivity : AppCompatActivity() {
@@ -98,7 +97,8 @@ class SupplyProductActivity : AppCompatActivity() {
 
 
         btnComplete.setOnClickListener {
-            finish()
+//            finish()
+//            getUTF8String(")=/?'*>:(;!_\".-%&+,<")
 //            parseGS1("\u001D1721062310000000\u001D2112YZYCcRHkCqnbCC12u1\u001D0110631721690828")
         }
         btnScanpak.setOnClickListener {
@@ -155,7 +155,7 @@ class SupplyProductActivity : AppCompatActivity() {
         val productCode = etProductCode.text.toString()
         val expiry = etExpiry.text.toString()
         val batch = etBatchNo.text.toString()
-        val serialNumber = etSerialNumber.text.toString()
+        val serialNumber =  Uri.encode(etSerialNumber.text.toString())
 
         mViewModel.postSupplyInfo(
             this,
@@ -323,6 +323,7 @@ class SupplyProductActivity : AppCompatActivity() {
                 Log.d("SUPPLY", expiry?.textBody.toString())
                 hitAPIRequest()
             } catch (ex: Exception) {
+                Log.d("SUPPLY ERROR ",ex.message.toString())
                 Toast.makeText(this, "Invalid Data Try to scan again", Toast.LENGTH_SHORT)
                     .show()
             }
@@ -333,7 +334,8 @@ class SupplyProductActivity : AppCompatActivity() {
             makeEmptyFields()
         }
     }
-    fun prepareForColors(){
+
+    private fun prepareForColors(){
         map.put("11110201",amberColor)
         map.put("11110201",amberColor)
         map.put("11411100",amberColor)
@@ -505,4 +507,5 @@ class SupplyProductActivity : AppCompatActivity() {
         map.put("11320800",amberColor)
         map.put("11320800",amberColor)
     }
+
 }

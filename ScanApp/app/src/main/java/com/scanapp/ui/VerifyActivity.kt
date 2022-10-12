@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -96,7 +97,7 @@ class VerifyActivity : AppCompatActivity()
 
 
         btnComplete.setOnClickListener {
-//            finish()
+            finish()
         }
         btnScanpak.setOnClickListener {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
@@ -172,6 +173,7 @@ class VerifyActivity : AppCompatActivity()
                 Log.d("SUPPLY", expiry?.textBody.toString())
                 hitAPIRequest()
             } catch (ex: Exception) {
+                Log.d("SUPPLY ERROR ",ex.message.toString())
                 Toast.makeText(this, "Invalid Data Try to scan again", Toast.LENGTH_SHORT)
                     .show()
             }
@@ -204,7 +206,7 @@ class VerifyActivity : AppCompatActivity()
         val productCode = etProductCode.text.toString()
         val expiry = etExpiry.text.toString()
         val batch = etBatchNo.text.toString()
-        val serialNumber = etSerialNumber.text.toString()
+        val serialNumber =  Uri.encode(etSerialNumber.text.toString())
 
         mViewModel.verifyPack(this, productCode, serialNumber, batch, expiry, object : ProductSupplyViewModel.onCompleteListener
         {
