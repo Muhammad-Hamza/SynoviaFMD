@@ -20,12 +20,14 @@ import retrofit2.Callback
 class TokenViewModel(application: Application) : AndroidViewModel(application)
 {
 
-    val CLIENT_CRED_TE ="rZFse0cCPCuQkkNy1Lpm09Gr"
-    val CLIENT_ID_TE ="MzkX7fY5QjMLRFgo33XLkpPf"
-    val CLIENT_CRED_QA ="aa24dd48-bb7d-4fc9-b5a0-248b1bda0207"
-    val CLIENT_ID_QA ="b6e49ab1-b04e-4f55-bbaf-270ad2b8ed8c"
-// val CLIENT_CRED_QA ="45ff8705-a9cf-4153-b921-cacf01a73965"
-//    val CLIENT_ID_QA ="ac6f57ed-6759-4c6e-9668-139ae5f5fc45"
+//    val CLIENT_CRED_TE ="rZFse0cCPCuQkkNy1Lpm09Gr"
+//    val CLIENT_ID_TE ="MzkX7fY5QjMLRFgo33XLkpPf"
+//    val CLIENT_CRED_QA ="aa24dd48-bb7d-4fc9-b5a0-248b1bda0207"
+//    val CLIENT_ID_QA ="b6e49ab1-b04e-4f55-bbaf-270ad2b8ed8c"
+ val CLIENT_CRED_QA ="45ff8705-a9cf-4153-b921-cacf01a73965"
+    val CLIENT_ID_QA ="ac6f57ed-6759-4c6e-9668-139ae5f5fc45"
+    val CLIENT_SECRET_KEY_PROD ="ba796725-b515-41be-b81c-0ff8365a7704"
+    val CLIENT_ID_PROD ="d23766cc-b558-4f8e-a880-8ee929da15d0"
 
     private lateinit var mErrorListener: Listeners.DialogInteractionListener
 
@@ -44,7 +46,7 @@ class TokenViewModel(application: Application) : AndroidViewModel(application)
         mErrorListener.addDialog()
         val apiService = ApiClient.client(context).create(ApiInterface::class.java)
         Log.d(TAG, "===============LOGGING===============")
-        var call = apiService.getToken("client_credentials", CLIENT_ID_QA, CLIENT_CRED_QA)
+        var call = apiService.getToken("client_credentials", CLIENT_ID_PROD, CLIENT_SECRET_KEY_PROD)
 
         call?.enqueue(object : Callback<TokenResponse>
         {

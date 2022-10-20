@@ -97,8 +97,8 @@ class SupplyProductActivity : AppCompatActivity() {
 
 
         btnComplete.setOnClickListener {
-//            finish()
-//            getUTF8String(")=/?'*>:(;!_\".-%&+,<")
+            finish()
+//            getUTF/8String(")=/?'*>:(;!_\".-%&+,<")
 //            parseGS1("\u001D1721062310000000\u001D2112YZYCcRHkCqnbCC12u1\u001D0110631721690828")
         }
         btnScanpak.setOnClickListener {

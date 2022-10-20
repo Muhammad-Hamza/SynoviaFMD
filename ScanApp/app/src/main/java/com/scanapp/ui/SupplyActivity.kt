@@ -28,8 +28,11 @@ class SupplyActivity : AppCompatActivity()
 //                }
 //
 //            } else
-            if (!dNum.text.isNullOrEmpty())
+            if (!dNum.text.isNullOrEmpty()){
+
+                dNum.setText("")
                 launchActivity<SupplyProductActivity> { }
+            }
             else
                 Toast.makeText(applicationContext,"Please Enter Delivery Number First",Toast.LENGTH_SHORT).show()
         }
