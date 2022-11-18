@@ -1,12 +1,10 @@
 package com.scanapp.ui.dashboard
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
@@ -32,14 +30,19 @@ class ScannerActivity : AppCompatActivity() {
                 finish()
             }
         }
-        scannerView.setOnClickListener {
-            codeScanner.startPreview()
-        }
+
     }
 
     override fun onResume() {
         super.onResume()
-        codeScanner.startPreview()
+        Handler().postDelayed({
+            try {
+                codeScanner.releaseResources()
+                codeScanner.startPreview()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }, 1500)
     }
     //2022-09-08 00:04:25.162 10561-10561/com.scanapp E/asd: 01022564353848351725123110a0001210000000001
     //2022-09-08 00:07:06.826 10561-10561/com.scanapp E/asd: 0102256435384835172502091000001210000000003
@@ -50,4 +53,6 @@ class ScannerActivity : AppCompatActivity() {
         codeScanner.releaseResources()
         super.onPause()
     }
+
+
 }
